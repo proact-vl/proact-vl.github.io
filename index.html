@@ -325,6 +325,14 @@
             background: #0f172a;
         }
 
+        .demo-card iframe {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            border: 0;
+            background: #0f172a;
+        }
+
         .demo-card-body {
             padding: 1.15rem 1.15rem 1.25rem;
             text-align: left;
@@ -566,10 +574,13 @@
 
             <div class="demo-grid">
                 <div class="demo-card">
-                    <video controls preload="metadata">
-                        <source src="./assert/demo_solo_commentary.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe
+                        src="https://www.youtube.com/embed/hEMyNKgxYT8"
+                        title="Solo Commentary Demo"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
                     <div class="demo-card-body">
                         <span class="demo-pill">Task Type 1</span>
                         <h4>Solo Commentary</h4>
@@ -581,10 +592,13 @@
                 </div>
 
                 <div class="demo-card">
-                    <video controls preload="metadata">
-                        <source src="./assert/demo_multi_commentary.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe
+                        src="https://www.youtube.com/embed/0eDwfPGm51w"
+                        title="Multi-Speaker Commentary Demo"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
                     <div class="demo-card-body">
                         <span class="demo-pill">Task Type 2</span>
                         <h4>Multi-Speaker Commentary</h4>
@@ -596,10 +610,13 @@
                 </div>
 
                 <div class="demo-card">
-                    <video controls preload="metadata">
-                        <source src="./assert/demo_guidance.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe
+                        src="https://www.youtube.com/embed/awVtwRwB1CI"
+                        title="Guidance Assistance Demo"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
                     <div class="demo-card-body">
                         <span class="demo-pill">Task Type 3</span>
                         <h4>Guidance Assistance</h4>
