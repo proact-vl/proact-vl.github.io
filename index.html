@@ -305,12 +305,15 @@
 
         .demo-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             margin-top: 1.5rem;
         }
 
         .demo-card {
+            max-width: 980px;
+            width: 100%;
+            margin: 0 auto;
             background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
             border: 1px solid #dbeafe;
             border-radius: 18px;
@@ -456,19 +459,23 @@
             <div class="feature-compact-list">
                 <div class="feature-compact-item">
                     <strong>🎮 Real-Time Processing.</strong>
-                    Handles infinite video streams with low latency for continuous interaction.
+                    Handles infinite video streams with low latency.
                 </div>
                 <div class="feature-compact-item">
-                    <strong>💬 Multi-Modal Commentary.</strong>
+                    <strong>🚀 Proactive Understanding.</strong>
+                    Goes beyond reactive responses to provide contextual insights.
+                </div>
+                <div class="feature-compact-item">
+                    <strong>💬 Multi-Scenario Application.</strong>
                     Supports single-speaker, multi-speaker, and guidance commentary scenarios.
                 </div>
                 <div class="feature-compact-item">
-                    <strong>🧠 Proactive Understanding.</strong>
-                    Goes beyond reactive responses with contextual and timely intervention.
+                    <strong>🔧 Flexible Architecture.</strong>
+                    Built on multiple backbone models (Qwen2-VL, LiveCC-7B-Base, Qwen2.5-VL, Qwen3-VL).
                 </div>
                 <div class="feature-compact-item">
-                    <strong>🧩 Flexible Architecture.</strong>
-                    Works with Qwen2-VL, Qwen2.5-VL, and Qwen3-VL backbones.
+                    <strong>📊 Comprehensive Evaluation.</strong>
+                    Includes gaming scenario evaluation with LLM-based judging.
                 </div>
             </div>
         </section>
@@ -537,31 +544,6 @@
                 </p>
             </div>
 
-            <div class="method-grid">
-                <div class="method-item">
-                    <h3>1. Real-Time Streaming Perception</h3>
-                    <p>
-                        Proact-VL is built for <strong>continuous video input</strong> rather than isolated clips, allowing the
-                        system to maintain low-latency understanding over long or unbounded streams.
-                    </p>
-                    <div class="placeholder-box">
-                        Place additional method figure or qualitative visualization here if needed.
-                    </div>
-                    <p class="caption"><strong>Placeholder:</strong> Optional method-specific figure.</p>
-                </div>
-                <div class="method-item">
-                    <h3>2. Proactive Commentary and Guidance</h3>
-                    <p>
-                        Beyond reactive answering, Proact-VL supports <strong>single-speaker commentary</strong>,
-                        <strong>multi-speaker co-commentary</strong>, and <strong>guidance interaction</strong>, enabling richer
-                        and more human-like agent behavior.
-                    </p>
-                    <div class="placeholder-box">
-                        Place another figure, example timeline, or interaction snapshot here.
-                    </div>
-                    <p class="caption"><strong>Placeholder:</strong> Optional interaction figure.</p>
-                </div>
-            </div>
         </section>
 
         <section id="demo">
