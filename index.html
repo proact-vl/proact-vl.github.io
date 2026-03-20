@@ -15,7 +15,7 @@
             --text-color: #1f2937;
             --light-gray: #f3f4f6;
             --white: #ffffff;
-            --max-width: 1240px;
+            --max-width: 1140px;
         }
 
         body {
@@ -76,7 +76,13 @@
         .authors a { color: var(--text-color); text-decoration: none; font-weight: 500; }
         .authors a:hover { color: #111827; text-decoration: underline; }
 
-        .affiliations { font-size: 0.95rem; color: #4b5563; margin-bottom: 2rem; }
+        .affiliations {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.8;
+        }
         .affiliations span { margin: 0 0.5rem; display: inline-block; }
         .author-note {
             display: block;
@@ -120,10 +126,10 @@
         }
 
         .teaser-image {
-            max-width: 106%;
-            width: 106%;
-            margin-left: -3%;
-            margin-right: -3%;
+            max-width: 102%;
+            width: 102%;
+            margin-left: -1%;
+            margin-right: -1%;
         }
 
         .caption {
@@ -388,16 +394,23 @@
         <h1 class="paper-title">Proact-VL: A Proactive VideoLLM for Real-Time AI Companions</h1>
 
         <div class="authors">
-            <a href="#">Weicai Yan</a><sup>*</sup>,
-            <a href="#">Yuhong Dai</a><sup>*</sup>,
-            <a href="#">Qi Ran</a>,
-            <a href="#">Haodong Li</a>,
-            <a href="#">Wang Lin</a>,
-            <a href="#">Hao Liao</a>,
-            <a href="#">Xing Xie</a>,
-            <a href="#">Tao Jin</a>,
-            <a href="#">Jianxun Lian</a>
-            <span class="author-note"><sup>*</sup>Equal contribution</span>
+            <a href="#">Weicai Yan</a><sup>*1</sup>,
+            <a href="#">Yuhong Dai</a><sup>*2</sup>,
+            <a href="#">Qi Ran</a><sup>2</sup>,
+            <a href="#">Haodong Li</a><sup>3</sup>,
+            <a href="#">Wang Lin</a><sup>1</sup>,
+            <a href="#">Hao Liao</a><sup>2</sup>,
+            <a href="#">Xing Xie</a><sup>4</sup>,
+            <a href="#">Tao Jin</a><sup>†1</sup>,
+            <a href="#">Jianxun Lian</a><sup>†4</sup>
+        </div>
+
+        <div class="affiliations">
+            <span><sup>1</sup> Zhejiang University</span>
+            <span><sup>2</sup> Shenzhen University</span>
+            <span><sup>3</sup> South China University of Technology</span>
+            <span><sup>4</sup> Microsoft Research</span>
+            <span class="author-note"><sup>*</sup> Equal Contribution, <sup>†</sup> Corresponding Author</span>
         </div>
 
         <div class="links">
