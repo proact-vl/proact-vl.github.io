@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proact-VL: A Proactive VideoLLM for Real-Time AI Companions</title>
+    <meta name="description" content="Project page for Proact-VL: A Proactive VideoLLM for Real-Time AI Companions">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --white: #ffffff;
+            --max-width: 1240px;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            margin-top: 4rem;
+            color: #111827;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        header { padding: 4rem 0 2rem; }
+
+        h1.paper-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: -webkit-linear-gradient(45deg, #1e3a8a, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .authors {
+            font-size: 1.08rem;
+            margin-bottom: 1rem;
+            line-height: 1.9;
+        }
+        .authors a { color: var(--text-color); text-decoration: none; font-weight: 500; }
+        .authors a:hover { color: #111827; text-decoration: underline; }
+
+        .affiliations { font-size: 0.95rem; color: #4b5563; margin-bottom: 2rem; }
+        .affiliations span { margin: 0 0.5rem; display: inline-block; }
+        .author-note {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .links { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .btn {
+            background-color: var(--text-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .btn-primary { background-color: var(--primary-color); }
+        .btn-primary:hover { background-color: var(--secondary-color); transform: translateY(-2px); }
+        .btn-dark { background-color: #374151; }
+        .btn-dark:hover { background-color: #111827; transform: translateY(-2px); }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .teaser-block {
+            margin-top: 0.75rem;
+        }
+
+        .teaser-image {
+            max-width: 106%;
+            width: 106%;
+            margin-left: -3%;
+            margin-right: -3%;
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .abstract-box {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: justify;
+        }
+
+        .motivation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .motivation-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .motivation-card h3 {
+            color: #dc2626;
+            font-size: 1.1rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .method-item h3 { color: var(--primary-color); }
+        .exp-block { margin-bottom: 3rem; }
+
+        .feature-compact-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.25rem;
+            margin-top: 0;
+        }
+
+        .feature-compact-item {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 1rem 1.1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-compact-item strong {
+            color: #111827;
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        .tight-section-title {
+            margin-top: 0.35rem;
+        }
+
+        .tldr-title {
+            margin-bottom: 0.2rem;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .no-divider {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .tldr-box {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            background: #fdf3e7;
+            border: 1px solid #f4c68d;
+            border-radius: 18px;
+            box-shadow: none;
+            text-align: left;
+        }
+
+        .tldr-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .tldr-icon {
+            flex: 0 0 auto;
+            font-size: 1.7rem;
+            line-height: 1;
+            margin-top: 0.1rem;
+        }
+
+        .tldr-text {
+            flex: 1 1 auto;
+            font-size: 1.06rem;
+            line-height: 1.8;
+            color: #352f28;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .tldr-text strong {
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .tldr-section {
+            margin-top: -3.8rem;
+        }
+
+
+        .side-by-side-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .placeholder-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 2rem;
+            min-height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .video-frame {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 2rem;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .demo-intro {
+            max-width: 860px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            color: #4b5563;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .demo-card {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            border: 1px solid #dbeafe;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.08);
+        }
+
+        .demo-card video {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            background: #0f172a;
+        }
+
+        .demo-card-body {
+            padding: 1.15rem 1.15rem 1.25rem;
+            text-align: left;
+        }
+
+        .demo-pill {
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            padding: 0.3rem 0.65rem;
+            border-radius: 9999px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .demo-card h4 {
+            margin: 0 0 0.55rem;
+            font-size: 1.08rem;
+            color: #0f172a;
+        }
+
+        .demo-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .bibtex-container {
+            background-color: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            text-align: left;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #334155;
+            white-space: pre-wrap;
+        }
+
+        footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #e5e7eb; color: #6b7280; }
+
+        @media (max-width: 768px) {
+            .motivation-grid, .method-grid, .side-by-side-grid, .demo-grid { grid-template-columns: 1fr; }
+            h1.paper-title { font-size: 1.8rem; }
+            .video-frame { min-height: 260px; }
+            .feature-compact-list { grid-template-columns: 1fr; }
+            .teaser-image {
+                max-width: 100%;
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="container text-center">
+        <h1 class="paper-title">Proact-VL: A Proactive VideoLLM for Real-Time AI Companions</h1>
+
+        <div class="authors">
+            <a href="#">Weicai Yan</a><sup>*</sup>,
+            <a href="#">Yuhong Dai</a><sup>*</sup>,
+            <a href="#">Qi Ran</a>,
+            <a href="#">Haodong Li</a>,
+            <a href="#">Wang Lin</a>,
+            <a href="#">Hao Liao</a>,
+            <a href="#">Xing Xie</a>,
+            <a href="#">Tao Jin</a>,
+            <a href="#">Jianxun Lian</a>
+            <span class="author-note"><sup>*</sup>Equal contribution</span>
+        </div>
+
+        <div class="links">
+            <a href="https://arxiv.org/abs/2603.03447" class="btn btn-dark">Paper (Arxiv)</a>
+            <a href="https://github.com/microsoft/AnthropomorphicIntelligence" class="btn btn-dark">Code</a>
+            <a href="#demo" class="btn btn-primary">Demo Video</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="tldr" class="tldr-section">
+            <div class="text-center"><h2 class="section-title tldr-title summary-title no-divider" style="margin-top: 2rem;">TL;DR</h2></div>
+            <div class="abstract-box tldr-box" style="padding: 1rem 1.35rem;">
+                <div class="tldr-inner">
+                    <div class="tldr-icon">🌟</div>
+                    <p class="tldr-text" style="margin: 0;">
+                        Proact-VL turns multimodal language models into <strong>proactive, real-time AI companions</strong>
+                        that can continuously watch, understand, decide when to speak, and generate timely multimodal
+                        commentary in dynamic environments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center teaser-block">
+            <img src="./overview.png" alt="Teaser figure showing the Proact-VL framework" class="img-fluid teaser-image">
+            <p class="caption">
+                <strong>Figure 1:</strong> Proact-VL transforms multimodal language models into proactive, real-time interactive
+                agents that continuously perceive the environment, decide when to respond, and produce human-like commentary.
+            </p>
+        </div>
+
+        <section id="experiments">
+            <div class="text-center"><h2 class="section-title tight-section-title summary-title no-divider">Key Features</h2></div>
+            <div class="feature-compact-list">
+                <div class="feature-compact-item">
+                    <strong>🎮 Real-Time Processing.</strong>
+                    Handles infinite video streams with low latency for continuous interaction.
+                </div>
+                <div class="feature-compact-item">
+                    <strong>💬 Multi-Modal Commentary.</strong>
+                    Supports single-speaker, multi-speaker, and guidance commentary scenarios.
+                </div>
+                <div class="feature-compact-item">
+                    <strong>🧠 Proactive Understanding.</strong>
+                    Goes beyond reactive responses with contextual and timely intervention.
+                </div>
+                <div class="feature-compact-item">
+                    <strong>🧩 Flexible Architecture.</strong>
+                    Works with Qwen2-VL, Qwen2.5-VL, and Qwen3-VL backbones.
+                </div>
+            </div>
+        </section>
+
+        <section id="abstract">
+            <div class="text-center"><h2 class="section-title">Abstract</h2></div>
+            <div class="abstract-box">
+                <p>
+                    We introduce <strong>Proact-VL</strong>, a general framework that shapes multimodal language models into
+                    proactive, real-time interactive agents capable of human-like environment perception and interaction.
+                    Proact-VL is designed to address three core requirements for AI companions in streaming settings:
+                    <strong>real-time processing of infinite video streams</strong>, <strong>autonomous response triggering</strong>,
+                    and <strong>context-aware, controllable commentary generation</strong>. The framework supports multiple
+                    interaction scenarios, including single-speaker commentary, multi-speaker commentary, and guidance-oriented
+                    assistance, and is built on flexible backbone models such as Qwen2-VL, Qwen2.5-VL, and Qwen3-VL.
+                    To evaluate these capabilities, the paper presents a comprehensive live gaming benchmark with LLM-based
+                    judging for both responsiveness and commentary quality.
+                </p>
+            </div>
+        </section>
+
+        <section id="motivation">
+            <div class="text-center"><h2 class="section-title" style="margin-top: 2rem; font-size: 1.5rem;">Motivation: Why Current VideoLLMs Fall Short?</h2></div>
+            <div class="motivation-grid">
+                <div class="motivation-card">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Reactive Instead of Proactive
+                    </h3>
+                    <p>
+                        Most existing VideoLLMs are designed around <strong>request-response interaction</strong>. They can answer
+                        questions after being prompted, but they do not naturally decide <strong>when to speak</strong>, when to
+                        stay silent, or when an event deserves timely intervention in an ongoing stream.
+                    </p>
+                </div>
+                <div class="motivation-card">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Poor Fit for Continuous Streaming
+                    </h3>
+                    <p>
+                        Real AI companions must operate over <strong>infinite video streams with low latency</strong>. This requires
+                        stable streaming perception, response timing, and commentary quality control, which are not the primary
+                        target of traditional offline or clip-based video understanding systems.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="method">
+            <div class="text-center"><h2 class="section-title">Methodology</h2></div>
+
+            <div class="text-center">
+                <img src="./framework.png" alt="Figure 2: Proact-VL Method Overview" class="img-fluid" style="max-width: 95%;">
+                <p class="caption">
+                    <strong>Figure 2:</strong> Overview of the Proact-VL framework. The system combines streaming multimodal
+                    perception with proactive response decision-making and commentary generation for real-time AI companions.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <p class="text-center" style="max-width: 800px; margin: 0 auto;">
+                    Proact-VL addresses these challenges by jointly modeling <strong>continuous perception</strong>,
+                    <strong>response triggering</strong>, and <strong>controllable interactive generation</strong> under realistic
+                    latency constraints.
+                </p>
+            </div>
+
+            <div class="method-grid">
+                <div class="method-item">
+                    <h3>1. Real-Time Streaming Perception</h3>
+                    <p>
+                        Proact-VL is built for <strong>continuous video input</strong> rather than isolated clips, allowing the
+                        system to maintain low-latency understanding over long or unbounded streams.
+                    </p>
+                    <div class="placeholder-box">
+                        Place additional method figure or qualitative visualization here if needed.
+                    </div>
+                    <p class="caption"><strong>Placeholder:</strong> Optional method-specific figure.</p>
+                </div>
+                <div class="method-item">
+                    <h3>2. Proactive Commentary and Guidance</h3>
+                    <p>
+                        Beyond reactive answering, Proact-VL supports <strong>single-speaker commentary</strong>,
+                        <strong>multi-speaker co-commentary</strong>, and <strong>guidance interaction</strong>, enabling richer
+                        and more human-like agent behavior.
+                    </p>
+                    <div class="placeholder-box">
+                        Place another figure, example timeline, or interaction snapshot here.
+                    </div>
+                    <p class="caption"><strong>Placeholder:</strong> Optional interaction figure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo">
+            <div class="text-center"><h2 class="section-title">Demo Video</h2></div>
+            <p class="demo-intro">
+                Proact-VL supports three distinct real-time companion modes: single-speaker live commentary,
+                multi-speaker co-commentary, and guidance-oriented assistance. The demos below map one video to
+                each task type.
+            </p>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <video controls preload="metadata">
+                        <source src="./assert/demo_solo_commentary.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="demo-card-body">
+                        <span class="demo-pill">Task Type 1</span>
+                        <h4>Solo Commentary</h4>
+                        <p>
+                            A single proactive commentator tracks the live scene, decides when to speak, and delivers
+                            concise event-focused narration with low latency.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <video controls preload="metadata">
+                        <source src="./assert/demo_multi_commentary.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="demo-card-body">
+                        <span class="demo-pill">Task Type 2</span>
+                        <h4>Multi-Speaker Commentary</h4>
+                        <p>
+                            Multiple assistants coordinate as co-commentators, taking turns to produce richer,
+                            more dynamic narration over the same live stream.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <video controls preload="metadata">
+                        <source src="./assert/demo_guidance.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="demo-card-body">
+                        <span class="demo-pill">Task Type 3</span>
+                        <h4>Guidance Assistance</h4>
+                        <p>
+                            The agent observes ongoing actions, identifies teachable moments, and provides timely
+                            guidance that helps users complete tasks more effectively.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="citation">
+            <div class="text-center"><h2 class="section-title">Citation</h2></div>
+            <div class="bibtex-container">
+<pre>@misc{yan2026proactvl,
+  title={Proact-VL: A Proactive VideoLLM for Real-Time AI Companions},
+  author={Weicai Yan and Yuhong Dai and Qi Ran and Haodong Li and Wang Lin and Hao Liao and Xing Xie and Tao Jin and Jianxun Lian},
+  year={2026},
+  eprint={2603.03447},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2603.03447},
+}</pre>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            <p>Copyright © 2026 Proact-VL Project Team.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
