@@ -56,7 +56,23 @@
             padding-left: 1rem;
         }
 
-        header { padding: 4rem 0 2rem; }
+        header { padding: 3rem 0 2rem; }
+
+        .logo-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .logo-row img {
+            height: 54px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
 
         h1.paper-title {
             font-size: 2.5rem;
@@ -390,6 +406,13 @@
             h1.paper-title { font-size: 1.8rem; }
             .video-frame { min-height: 260px; }
             .feature-compact-list { grid-template-columns: 1fr; }
+            .logo-row {
+                gap: 1.25rem;
+                margin-bottom: 1.5rem;
+            }
+            .logo-row img {
+                height: 40px;
+            }
             .teaser-image {
                 max-width: 100%;
                 width: 100%;
@@ -402,6 +425,13 @@
 <body>
 
     <header class="container text-center">
+        <div class="logo-row">
+            <img src="./assert/zju.png" alt="Zhejiang University logo">
+            <img src="./assert/szu.png" alt="Shenzhen University logo">
+            <img src="./assert/scut.png" alt="South China University of Technology logo">
+            <img src="./assert/microsoft.png" alt="Microsoft Research logo">
+        </div>
+
         <h1 class="paper-title">Proact-VL: A Proactive VideoLLM for Real-Time AI Companions</h1>
 
         <div class="authors">
